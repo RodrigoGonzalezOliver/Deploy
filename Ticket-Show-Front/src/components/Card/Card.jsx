@@ -108,7 +108,7 @@ const Card = ({id, image, name, date, price, genres,city}) => {
           {quantityPerItem > 0 && (
             <button onClick={() => removeItem(id)}>- Remover</button>
           )}
-          <button onClick={() => addToCart()} className={style.addToCartButton}>
+          <button onClick={() => addToCart()} className={""}>
             {/* Icono de carrito */}
             <FiShoppingCart size={20} />
           </button>
