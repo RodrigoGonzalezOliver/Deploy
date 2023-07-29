@@ -21,6 +21,7 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 require("dotenv").config();
+const {PORT} = process.env;
 const {
   loadEvents,
   loadPlaces,
@@ -31,7 +32,6 @@ const {
   loadDate
 } = require("./src/controllers/loadsDatabase.js");
 
-const port = process.env.PORT || 3001;
 // Syncing all the models at once
 conn.sync({ force: true }).then(async () => {
   loadUsers();
@@ -41,8 +41,8 @@ conn.sync({ force: true }).then(async () => {
   loadGenres();
   loadCitys();
   loadDate();
-  server.listen(port, () => {
-    console.log(`servidor corriendo en puerto: ${port}`); // eslint-disable-line no-console
+  server.listen(process.env.PORT, () => {
+    console.log(`servidor corriendo en puerto:`, process.env.PORT); // eslint-disable-line no-console
   });
 
 });
