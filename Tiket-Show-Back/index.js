@@ -31,7 +31,7 @@ const {
   loadCitys,
   loadDate
 } = require("./src/controllers/loadsDatabase.js");
-
+const {PORT} = process.env;
 // Syncing all the models at once
 conn.sync({ force: true }).then(async () => {
   loadUsers();
@@ -42,7 +42,7 @@ conn.sync({ force: true }).then(async () => {
   loadCitys();
   loadDate();
   server.listen(process.env.PORT, () => {
-    console.log(`servidor corriendo en puerto:`, process.env.PORT); // eslint-disable-line no-console
+    console.log(`servidor corriendo en puerto: ${PORT}`); // eslint-disable-line no-console
   });
 
 });
